@@ -36,10 +36,17 @@ def lex(file_contents):
             token = ""
     return tokens_list
 
+def parse(tokens):
+    i = 0
+    while(i < len(tokens)):
+        if tokens[i] + " " + tokens[i+1][:6] == "PRINT STRING":
+            print(tokens[i+1][7:] )
+            i = i + 2
+
 def run():
     data = open_file(sys.argv[1])
     tokens = lex(data)
-    print(tokens)
+    parse(tokens)
 
 if __name__ == "__main__":
     run()
